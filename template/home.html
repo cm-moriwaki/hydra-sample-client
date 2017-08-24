@@ -1,0 +1,37 @@
+<html lang="jp">
+  <head>
+    <meta charset="UTF-8">
+    <title>クライアントホーム</title>
+  </head>
+  <body>
+    <h1>クライアントアプリ</h1>
+    <p>OAuth認証を試すためのクライアントサンプル</p>
+    <p>hydraへアクセストークンを要求し、(仮想の)個人情報データにアクセスします</p>
+    <form action="/run" method="get">
+      <p>利用したい権限(カンマで区切る)</p>
+      <p><input type="text" name="scopes" value="pi"></p>
+      <p><input type="submit" value="アクセストークンを要求する"></p>
+    </form>
+    {% if callback is defined %}
+    <div>
+      <p>同意処理が完了しました</p>
+      {% if error is not none %}
+      <p>エラーが発生しています</p>
+      <p>エラー</p>
+      <p>{{ error }}</p>
+      <p>詳細</p>
+      <p>{{ error_description }}</p>
+      {% else %}
+      <p>成功!!!!!!!!!!!!!!!!!!!</p>
+      <p>認可コード</p>
+      <p>{{ code }}</p>
+      <form action="/get_info" method="get">
+          <p>アクセストークン</p>
+          <p><input type="text" name="token" value="{{ token }}" style="width: 800px;"></p>
+          <p><input type="submit" value="このアクセストークンを利用して個人データを取得する"></p>
+      </form>
+      {% endif %}
+    </div>
+    {% endif %}
+  </body>
+</html>
