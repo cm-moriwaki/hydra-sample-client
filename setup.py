@@ -6,6 +6,7 @@ setup(
     description='',
     long_description='',
     packages=find_packages(),
+    zip_safe=False,
     install_requires=[
         'flask',
         'requests',
@@ -15,6 +16,7 @@ setup(
             'run-hydra-sample-client=hydra_sample_client.client:cli',
         ]
     },
+    include_package_data=True,
     tests_require=['nose'],
     test_suite='nose.collector'
 )

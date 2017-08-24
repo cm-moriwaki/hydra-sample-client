@@ -2,7 +2,7 @@ from flask import Flask, render_template, redirect, url_for, request, jsonify
 import requests
 from hydra.client import Client
 
-app = Flask(__name__, template_folder="template")
+app = Flask(__name__)
 app.secret_key = 'client secret key'
 app.config['SESSION_TYPE'] = 'filesystem'
 
