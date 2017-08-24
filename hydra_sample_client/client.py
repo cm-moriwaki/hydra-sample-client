@@ -1,5 +1,4 @@
 from flask import Flask, render_template, redirect, url_for, request, jsonify
-import yaml
 import requests
 from hydra.client import Client
 
